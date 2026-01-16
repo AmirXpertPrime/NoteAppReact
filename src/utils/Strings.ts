@@ -1,0 +1,25 @@
+export const AppStrings = {
+  All: "All",
+  Favourate: "Favourate",
+  Archive: "Archive",
+  Notes: "Notes",
+  Reminders: "Reminders",
+  EditLabels: "Edit Labels",
+  DescriptionText: "Enter Description here",
+  TitleText: "Enter Title here",
+  Submit: "Submit",
+  Description: "Description",
+  Title: "Title",
+  NoArchivedNote: "No Archived Notes ",
+  NoAllNote: "No Notes Available",
+  NoFavourateNote: "No Favourate Notes",
+  Validations: {
+    EnterTitle: "Please enter the title.",
+    EnterDescription: "Please enter the description.",
+  },
+  Tabs: {
+    All: "All",
+    Favourate: "Favourite",
+    Archive: "Archive",
+  },
+};

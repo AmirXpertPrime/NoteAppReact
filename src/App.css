@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+
+h1 {
+  /* text-align: center; */
+  color: darkblue;
+  margin-bottom: 1rem;
+}
+
+
+.todoButton {
+  background-color: lightgrey;
+  margin-right: 10px;
+  border: none;
+  padding: 4px 4%;
+  cursor: pointer;
+  border-radius: 5px;
+  border-width: 1capx;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.todoBox {
+  border: 1px solid rgb(224, 220, 220);
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.menuButton {
+  margin-right: 10px;
+}
+
+.ImageICon {
+  width: 20px;
+  height: 20px;
+}
+

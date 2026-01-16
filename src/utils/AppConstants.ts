@@ -4,7 +4,6 @@ import deleteIcon from "../assets/delete.png";
 import heartEmpty from "../assets/heartEmpty.png";
 import plus from "../assets/plus.png";
 import BackButton from '../assets/BackButton.png'
-import App from "../App";
 import { AppStrings } from "./Strings";
 
 export const ListRow = [

@@ -1,4 +1,3 @@
-import { data } from "react-router-dom";
 import api from "./api.tsx";
 
 export const DevBaseUrl = "http://localhost:5000";
@@ -18,6 +17,21 @@ export const loginApi = async (data: any) => {
   const url = `${DevBaseUrl}/api/auth/login`;
   const method = "POST";
   const res = await api(url, method, false, data, false);
+  return res;
+};
+
+// Cookie auth helpers
+export const meApi = async () => {
+  const url = `${DevBaseUrl}/api/auth/me`;
+  const method = "GET";
+  const res = await api(url, method, true, {}, false);
+  return res;
+};
+
+export const logoutApi = async () => {
+  const url = `${DevBaseUrl}/api/auth/logout`;
+  const method = "POST";
+  const res = await api(url, method, true, {}, false);
   return res;
 };
 
@@ -55,6 +69,6 @@ export const deleteNoteApi = async (id: any) => {
   );
   const url = `${DevBaseUrl}/api/notes/deleteNote/${id}`;
   const method = "DELETE";
-  const res = await api(url, method, true, data, false);
+  const res = await api(url, method, true, {}, false);
   return res;
 };

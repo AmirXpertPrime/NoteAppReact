@@ -7,8 +7,8 @@ import AllNotes from "./AllNotes";
 import FavourateNotes from "./FavourateNotes";
 import ArchivedNotes from "./ArchivedNotes";
 import { ToastContainer, toast } from "react-toastify";
-import { getAllUserNotes } from "../../services/apiList";
-import { setAuthenticated, setUser } from "../../redux/Slice";
+import { getAllUserNotes, logoutApi } from "../../services/apiList";
+import { setAuthenticated, setAuthChecked, setUser } from "../../redux/Slice";
 import { useDispatch } from "react-redux";
 
 const Home = () => {
@@ -84,11 +84,19 @@ const Home = () => {
     getAllNotesfroApi();
   }, []);
 
-  const logout = () => {
-    localStorage.removeItem("jwtAuthToken");
-    dispatch(setAuthenticated(false));
-    dispatch(setUser(""));
-    navigate("/");
+  const logout = async () => {
+    try {
+      // Cookie auth: ask backend to clear the httpOnly cookie.
+      await logoutApi();
+    } catch (e) {
+      // Even if server logout fails, clear client auth state.
+      console.log("Logout error", e);
+    } finally {
+      dispatch(setAuthenticated(false));
+      dispatch(setUser(""));
+      dispatch(setAuthChecked(true));
+      navigate("/");
+    }
   };
 
   const getAllNotesfroApi = async () => {

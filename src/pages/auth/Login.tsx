@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginApi } from "../../services/apiList";
 import { toast } from "react-toastify";
-import { setAuthenticated, setUser } from "../../redux/Slice";
+import { setAuthenticated, setAuthChecked, setUser } from "../../redux/Slice";
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -24,13 +24,13 @@ const Login: React.FC = () => {
 
   const loginBtnCliked = async () => {
     try {
+      setIsLoading(true);
       const result = await loginApi({ email, password });
       console.log("Login result", JSON.stringify(result));
       if (result.success) {
-        console.log("token-------", result.data.token);
-        localStorage.setItem("jwtAuthToken", result.data.token);
-
+        // Cookie auth: backend should set the JWT cookie on successful login.
         dispatch(setAuthenticated(true));
+        dispatch(setAuthChecked(true));
         dispatch(setUser(result.data.fullName || email));
 
         toast.success("Login Successful");
@@ -41,6 +41,8 @@ const Login: React.FC = () => {
     } catch (err) {
       console.log("Login error", err);
       toast.error(err.message || "An error occurred during login");
+    } finally {
+      setIsLoading(false);
     }
   };
 

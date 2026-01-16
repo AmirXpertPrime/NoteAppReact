@@ -25,6 +25,7 @@ const Register: React.FC = () => {
       return;
     }
     try {
+      setIsLoading(true);
       let payload = {
         fullName: name,
         email: email,
@@ -45,15 +46,8 @@ const Register: React.FC = () => {
     } catch (err) {
       console.log("Registration error", err);
     } finally {
-      setIsLoading(true);
-    }
-
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Registered with:", { name, email });
       setIsLoading(false);
-      // Redirect or show success here
-    }, 1500);
+    }
   };
 
   return (

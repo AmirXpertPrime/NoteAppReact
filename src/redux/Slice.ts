@@ -7,6 +7,7 @@ const initialState = {
   user: {
     name: "",
     isAuthenticated: false,
+    authChecked: false,
   },
 };
 
@@ -20,12 +21,16 @@ const userSlice = createSlice({
     setAuthenticated: (state, action) => {
       state.user.isAuthenticated = action.payload;
     },
+    setAuthChecked: (state, action) => {
+      state.user.authChecked = action.payload;
+    },
     setUser: (state, action) => {
       state.user.name = action.payload;
     },
   },
 });
 
-export const { setIsFetching, setAuthenticated, setUser } = userSlice.actions;
+export const { setIsFetching, setAuthenticated, setAuthChecked, setUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;

@@ -105,7 +105,7 @@ const Login: React.FC = () => {
             </div>
 
             <button
-              type="button"
+              type="submit"
               className={`w-full py-2 px-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
                 isLoading ? "opacity-70 cursor-not-allowed" : ""
               }`}
